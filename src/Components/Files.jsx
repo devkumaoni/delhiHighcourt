@@ -22,18 +22,18 @@ export default function Files() {
 
   useEffect(() => {
     setYearFilesArray(generateYearFilesArray());
-  }, [year, generateYearFilesArray]);
+  }, [year, month, generateYearFilesArray]);
 
   useEffect(() => {
     if (year && !month) {
       setData2(data[Number(year)]);
     }
-    if (year && month) {
+    if (Boolean(year && month)) {
       setData2(data[Number(year)][Number(month)]);
     }
   }, [year, month, data2]);
 
-  function handleFileClick(e) {
+  function handleFileClick() {
     setYear(NaN);
     setMonth(NaN);
     setFile("");
@@ -42,14 +42,16 @@ export default function Files() {
 
   return (
     <div className="files">
-      {" "}
       <h2>Files</h2>
       <br />
+
       <div className="content">
-        year: {year ? year : "Select the year"}
+        {/* Year: {year ? year : "Select the year"}
         <br />
-        month: {month ? month : "Select the month"}
-        <br />
+        Month: {month ? month : "Select the month"}
+        <br /> */}
+
+        {!year && !month && <h2>Select Year and Month </h2>}
         {year && !month ? (
           <div className="allfiles">
             <h2>All files of year {year}</h2>
@@ -67,17 +69,24 @@ export default function Files() {
         ) : (
           ""
         )}
-        {year && month && data2
-          ? data2.map((d, index) => (
+        {year && month && data2?.map ? (
+          <div className="allfiles">
+            <h2>
+              Files from Year: {year} Month: {month}
+            </h2>
+            <br />
+            {data2?.map((d, index) => (
               <button key={index} onClick={(e) => setFile(d)}>
                 <a className="fileBtn" target="_blank" href={file}>
-                  File
+                  {`${year}_${month}_${index + 1}`}
                 </a>
               </button>
-            ))
-          : ""}
+            ))}
+          </div>
+        ) : (
+          ""
+        )}
       </div>
-      {/* {file && (<img src={} alt="FIle" style={{height:"100px", width: '100px'}}  />)} */}
     </div>
   );
 }
