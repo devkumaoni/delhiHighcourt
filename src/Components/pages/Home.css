@@ -1,0 +1,26 @@
+.container{
+    display: flex;
+    flex-direction: row;
+    margin: 1.5em;
+    padding: 0.5em;
+    height: 90vh;
+    gap: 3rem;
+}
+
+.content-div{
+    
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    width: 30%;
+    align-items: center;
+    gap: 2rem;
+
+}
+
+h2{
+    background-color: #222950;
+    width: 100%;
+    text-align: center;
+    color: white;
+}
